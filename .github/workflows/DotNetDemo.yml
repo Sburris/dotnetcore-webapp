@@ -23,6 +23,9 @@ jobs:
       with:
         Project-Name: TestApp
         Report-Location: /github/workspace/dcReports
+        
+    - name: SHOW ME THE FILES!!!
+      run: echo $(du -a)
                
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1

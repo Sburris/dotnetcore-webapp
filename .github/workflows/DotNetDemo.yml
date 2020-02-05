@@ -18,6 +18,9 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
       
+    - name: Make output directory
+      run: sudo mkdir -p /opt/dcReports
+      
     - name: Dependency Check Scan
       uses: sburris/dependency-check-action@master
       with:

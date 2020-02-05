@@ -21,16 +21,15 @@ jobs:
       uses: sburris/dependency-check-action@master
       with:
         Project-Name: TestApp
+        # The directory path specified here is specific to inside the docker container
         Report-Location: /github/workspace/dcReports
-       
-    - name: Where am I?
-      run: echo $(pwd)
-       
-    - name: SHOW ME THE FILES!!!
-      run: echo $(du -a)
+        Report-Format: HTML
+        Log-Name: MyLog.txt
                
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1
       with:
         name: dcReports
+        # This directory path is pointing to the same logical directory above but 
+        # outside the docker container
         path: ${{ github.workspace }}/dcReports

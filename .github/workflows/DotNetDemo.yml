@@ -9,7 +9,6 @@ jobs:
     
 
     steps:
-    - run: mkdir -p /github/reports
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -23,9 +22,10 @@ jobs:
       uses: sburris/dependency-check-action@master
       with:
         Project-Name: TestApp
-       
+        Report-Locaiton: myreports
+               
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1
       with:
         name: reports
-        path: reports
+        path: myreports

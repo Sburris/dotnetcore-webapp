@@ -13,8 +13,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
+      
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    - name: Dependency Check Scan
+      uses: sburris/dependency-check-action@master
       
     #Not currently publishing to Azure, commenting out
     #- uses: azure/appservice-actions/webapp@master
@@ -58,12 +62,12 @@ jobs:
 
    # This runs, but does not find any secrets.
    #Adding Secret-scan from Github staff
-    -  name: Secret Scan
-       uses: max/secret-scan@1.0.0
-    - uses: actions/upload-artifact@v1
-      with:
-        name: secretscanreport
-        path: reports  
+   # -  name: Secret Scan
+   #    uses: max/secret-scan@1.0.0
+   # - uses: actions/upload-artifact@v1
+   #   with:
+   #     name: secretscanreport
+   #     path: reports  
    
    #Does not work, yet.
    #https://github.com/marketplace/actions/federacy-salus-security-scan

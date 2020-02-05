@@ -19,3 +19,5 @@ jobs:
       
     - name: Dependency Check Scan
       uses: sburris/dependency-check-action@master
+      with:
+        Project-Name: TestApp

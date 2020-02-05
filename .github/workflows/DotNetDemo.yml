@@ -17,18 +17,15 @@ jobs:
       
     - name: Build with dotnet
       run: dotnet build --configuration Release
-      
-    - name: Make output directory
-      run: sudo mkdir -p /opt/dcReports
-      
+     
     - name: Dependency Check Scan
       uses: sburris/dependency-check-action@master
       with:
         Project-Name: TestApp
-        Report-Location: /opt/dcReports
+        Report-Location: /github/dcReports
                
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1
       with:
         name: dcReports
-        path: /opt/dcReports
+        path: /github/dcReports

@@ -22,10 +22,10 @@ jobs:
       uses: sburris/dependency-check-action@master
       with:
         Project-Name: TestApp
-        Report-Location: /github/dcReports
+        Report-Location: /github/workspace/dcReports
                
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1
       with:
         name: dcReports
-        path: /github/dcReports
+        path: /github/workspace/dcReports

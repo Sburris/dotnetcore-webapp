@@ -17,19 +17,24 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
      
-    - name: Dependency Check Scan
-      uses: sburris/dependency-check-action@v0.1-beta
-      with:
-        Project-Name: TestApp
-        # The directory path specified here is specific to inside the docker container
-        Report-Location: /github/workspace/dcReports
-        Report-Format: HTML
-        Log-Name: MyLog.txt
+    - name: Snyk Scan
+      uses: snyk/actions/dotnet@master
+      env:
+        SYNK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    #- name: Dependency Check Scan
+    #  uses: sburris/dependency-check-action@v0.1-beta
+    #  with:
+    #    Project-Name: TestApp
+    #    # The directory path specified here is specific to inside the docker container
+    #    Report-Location: /github/workspace/dcReports
+    #    Report-Format: HTML
+    #    Log-Name: MyLog.txt
                
-    - name: Upload report artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: dcReports
-        # This directory path is pointing to the same logical directory above but 
-        # outside the docker container
-        path: ${{ github.workspace }}/dcReports
+    #- name: Upload report artifacts
+    #  uses: actions/upload-artifact@v1
+    #  with:
+    #    name: dcReports
+    #    # This directory path is pointing to the same logical directory above but 
+    #    # outside the docker container
+    #    path: ${{ github.workspace }}/dcReports

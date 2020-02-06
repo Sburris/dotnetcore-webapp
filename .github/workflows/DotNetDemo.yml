@@ -16,11 +16,16 @@ jobs:
       
     - name: Build with dotnet
       run: dotnet build --configuration Release
-     
-    - name: Snyk Scan
-      uses: snyk/actions/dotnet@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    
+      # Is truffleHog under the covers
+    - name: Secret Scan
+      uses: max/secret-scan@1.0.0
+    
+
+    #- name: Snyk Scan
+    #  uses: snyk/actions/dotnet@master
+    #  env:
+    #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
     #- name: Dependency Check Scan
     #  uses: sburris/dependency-check-action@v0.1-beta

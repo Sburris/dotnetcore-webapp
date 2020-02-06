@@ -19,7 +19,7 @@ jobs:
     
 
     - name: gitleaks-action
-      uses: eshork/gitleaks-action@v1.0.0    
+      uses: eshork/gitleaks-action@master
 
 
     #  # Is truffleHog under the covers

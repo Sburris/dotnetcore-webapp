@@ -19,7 +19,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
 
-     SUCCESS
+    # SUCCESS
     - name: Dependency Check Scan
       uses: sburris/dependency-check-action@v0.1-beta
       with:
@@ -29,7 +29,7 @@ jobs:
         Report-Format: HTML
         Log-Name: MyLog.txt
              
-     SUCCESS (to be used with above action)
+    # SUCCESS (to be used with above action)
     - name: Upload report artifacts
       uses: actions/upload-artifact@v1
       with:

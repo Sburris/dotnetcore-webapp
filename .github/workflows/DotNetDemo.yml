@@ -17,9 +17,21 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
-    # FAIL - didn't put anything out to the screen and looks like no files are outputted.
-    - name: Trufflehog Actions Scan
-      uses: edplato/trufflehog-actions-scan@custom-rules   
+    - name: TruffleHog Scan
+      uses: sburris/truffleHog-action@master
+    
+    - name: Upload TruffleHog report
+      uses: actions/upload-artifact@v1
+      with:
+        name: truffleHog-Report
+        # This directory path is pointing to the same logical directory above but 
+        # outside the docker container
+        path: ${{ github.workspace }}/.reports
+
+    ## FAIL - didn't put anything out to the screen and looks like no files are outputted.
+    ##   Tried updated regex put didn't work
+    #- name: Trufflehog Actions Scan
+    #  uses: edplato/trufflehog-actions-scan@custom-rules   
 
     # UNKNOWN - have not tried
     # Looking at code, it seems to take the TruffleHog regex patterns for tokens and runs them.

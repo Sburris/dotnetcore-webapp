@@ -17,10 +17,17 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
-      # Is truffleHog under the covers
-    - name: Secret Scan
-      uses: max/secret-scan@1.0.0
-    
+
+    - name: gitleaks-action
+      uses: eshork/gitleaks-action@v1.0.0    
+
+
+    #  # Is truffleHog under the covers
+    #  #  Ran, didn't fail, but didn't print anything out
+    #  #  When ran locally did find a ton of stuff
+    #- name: Secret Scan
+    #  uses: max/secret-scan@1.0.0
+
 
     #- name: Snyk Scan
     #  uses: snyk/actions/dotnet@master

@@ -28,6 +28,9 @@ jobs:
         # outside the docker container
         path: ${{ github.workspace }}/reports
 
+    - name: Lets check files
+      run: ll ${{ github.workspace }}
+
     ## FAIL - didn't put anything out to the screen and looks like no files are outputted.
     ##   Tried updated regex put didn't work
     #- name: Trufflehog Actions Scan
@@ -48,6 +51,7 @@ jobs:
     #  # Is truffleHog under the covers
     #  #  Ran, didn't fail, but didn't print anything out
     #  #  When ran locally did find a ton of stuff
+    #  #  Wonder what I did wrong or if I am not looking in the right location
     #- name: Secret Scan
     #  uses: max/secret-scan@1.0.0
 

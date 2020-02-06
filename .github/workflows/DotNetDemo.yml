@@ -17,6 +17,16 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
+    - name: Trufflehog Actions Scan
+      uses: edplato/trufflehog-actions-scan@v0.9f-beta
+    
+
+    # UNKNOWN - have not tried
+    # Looking at code, it seems to take the TruffleHog regex patterns for tokens and runs them.
+    # Can output to slack which is nice, but don't have slack setup for testing
+    # Slack is not required, not sure what sort of output is produced.
+    #- name: GitSecure-BugBountySite
+    #  uses: bugbounty-site/GitSecure@v1    
 
     # FAIL
     #- name: gitleaks-action

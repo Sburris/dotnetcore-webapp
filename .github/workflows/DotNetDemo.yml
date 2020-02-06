@@ -28,9 +28,6 @@ jobs:
         # outside the docker container
         path: ${{ github.workspace }}/reports
 
-    - name: Lets check files
-      run: $(ll ${{ github.workspace }})
-
     ## FAIL - didn't put anything out to the screen and looks like no files are outputted.
     ##   Tried updated regex put didn't work
     #- name: Trufflehog Actions Scan

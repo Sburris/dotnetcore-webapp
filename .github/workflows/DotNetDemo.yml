@@ -17,9 +17,9 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
+    # FAIL - didn't put anything out to the screen and looks like no files are outputted.
     - name: Trufflehog Actions Scan
-      uses: edplato/trufflehog-actions-scan@v0.9f-beta
-    
+      uses: edplato/trufflehog-actions-scan@custom-rules   
 
     # UNKNOWN - have not tried
     # Looking at code, it seems to take the TruffleHog regex patterns for tokens and runs them.
@@ -31,7 +31,6 @@ jobs:
     # FAIL
     #- name: gitleaks-action
     #  uses: eshork/gitleaks-action@master
-
 
     # FAIL
     #  # Is truffleHog under the covers

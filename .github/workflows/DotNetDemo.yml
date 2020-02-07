@@ -21,6 +21,8 @@ jobs:
     
     - name: TruffleHog Scan
       uses: sburris/truffleHog-action@master
+      with:
+        scanArguments: --regex --json --max_depth=500
 
     - name: SHOW ME THE FILES!!!
       run: echo $(ls -l ./reports/)

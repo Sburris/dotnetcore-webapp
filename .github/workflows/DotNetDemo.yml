@@ -19,21 +19,30 @@ jobs:
     #- name: Build with dotnet
     #  run: dotnet build --configuration Release
     
-    - name: TruffleHog Scan
-      uses: sburris/truffleHog-action@master
-      with:
-        scanArguments: --regex --json --max_depth=500
+    - name: OWASP Attack Surface Detector Scan
+      uses: sburris/OWASP-Attack-Surface-Detector-Action@master
 
-    - name: SHOW ME THE FILES!!!
-      run: echo $(ls -l ./reports/)
-
-    - name: Upload TruffleHog report
+    - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: truffleHog-Report
-        # This directory path is pointing to the same logical directory above but 
-        # outside the docker container
-        path: ${{ github.workspace }}/reports
+        name: Owasp-Attack-Surface-Detector-files
+        path: ${{ github.workspace }}/Reports
+
+    #- name: TruffleHog Scan
+    #  uses: sburris/truffleHog-action@master
+    #  with:
+    #    scanArguments: --regex --json --max_depth=500
+
+    #- name: SHOW ME THE FILES!!!
+    #  run: echo $(ls -l ./reports/)
+
+    #- name: Upload TruffleHog report
+    #  uses: actions/upload-artifact@v1
+    #  with:
+    #    name: truffleHog-Report
+    #    # This directory path is pointing to the same logical directory above but 
+    #    # outside the docker container
+    #    path: ${{ github.workspace }}/reports
 
     ## FAIL - didn't put anything out to the screen and looks like no files are outputted.
     ##   Tried updated regex put didn't work

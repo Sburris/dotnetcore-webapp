@@ -21,6 +21,8 @@ jobs:
     
     - name: OWASP Attack Surface Detector Scan
       uses: sburris/OWASP-Attack-Surface-Detector-Action@master
+      with:
+        ReportLocation: $GITHUB_WORKSPACE
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1

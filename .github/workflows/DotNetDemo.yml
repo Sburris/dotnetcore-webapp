@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest   
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
       with:
         fetch-depth: 500
       
@@ -19,16 +19,16 @@ jobs:
     #- name: Build with dotnet
     #  run: dotnet build --configuration Release
     
-    - name: OWASP Attack Surface Detector Scan
-      uses: sburris/OWASP-Attack-Surface-Detector-Action@master
-      with:
-        ReportLocation: $GITHUB_WORKSPACE
+    # # Success
+    #- name: OWASP Attack Surface Detector Scan
+    #  uses: sburris/OWASP-Attack-Surface-Detector-Action@master
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: Owasp-Attack-Surface-Detector-files
-        path: ${{ github.workspace }}/Reports
+    # # Success (goes with above action)
+    #- name: Upload artifacts
+    #  uses: actions/upload-artifact@v1
+    #  with:
+    #    name: Owasp-Attack-Surface-Detector-files
+    #    path: ${{ github.workspace }}/Reports
 
     #- name: TruffleHog Scan
     #  uses: sburris/truffleHog-action@master
@@ -48,8 +48,10 @@ jobs:
 
     ## FAIL - didn't put anything out to the screen and looks like no files are outputted.
     ##   Tried updated regex put didn't work
-    #- name: Trufflehog Actions Scan
-    #  uses: edplato/trufflehog-actions-scan@custom-rules   
+    - name: Trufflehog Actions Scan
+      uses: edplato/trufflehog-actions-scan@master
+      with:
+        scanArguments: "--regex --entropy=False --max_depth=5 --rules /regexes.json"
 
     # UNKNOWN - have not tried
     # Looking at code, it seems to take the TruffleHog regex patterns for tokens and runs them.

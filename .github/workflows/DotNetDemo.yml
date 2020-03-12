@@ -51,7 +51,7 @@ jobs:
     - name: Trufflehog Actions Scan
       uses: edplato/trufflehog-actions-scan@master
       with:
-        scanArguments: "--regex --entropy=False --max_depth=5 --rules /regexes.json"
+        scanArguments: "--regex --entropy=False --max_depth=500 --rules /regexes.json"
 
     # UNKNOWN - have not tried
     # Looking at code, it seems to take the TruffleHog regex patterns for tokens and runs them.

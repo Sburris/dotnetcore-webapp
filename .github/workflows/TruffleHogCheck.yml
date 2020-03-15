@@ -21,5 +21,4 @@ jobs:
 
     - name: TruffleHog Scan
       uses: sburris/truffleHog-action@master
-      with:
         

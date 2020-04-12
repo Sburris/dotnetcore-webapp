@@ -21,7 +21,7 @@ jobs:
 
     # SUCCESS
     - name: Dependency Check Scan
-      uses: sburris/dependency-check-action@v0.1-beta
+      uses: sburris/dependency-check-action@master
       with:
         Project-Name: TestApp
         # The directory path specified here is specific to inside the docker container
